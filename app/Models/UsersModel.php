@@ -24,6 +24,16 @@ class UsersModel extends Model
     protected $validationMessages = [];
     protected $skipValidation     = false;
 
+    protected $beforeInsert = ['addGroup'];
+
+    protected function addGroup($data){
+
+        $data['data']['group'] = $this->assignGroup;
+
+        return $data;
+
+    }
+
     protected $assignGroup;
 
     public function withGroup(string $group){

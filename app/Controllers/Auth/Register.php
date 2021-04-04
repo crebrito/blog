@@ -19,20 +19,19 @@ class Register extends BaseController
 
         $data = [
 
-            'email' => 'aa@aa.com',
+            'email' => 'bb@aa.com',
             'password' => 'test123',
-            'name' => 'Pepe',
-            'surname' => 'Lopez',
+            'name' => 'carlos',
+            'surname' => 'brito',
             'id_country' => 12,
-            'group' => 2
         ];
 
         $user = new User($data);
         $user->generateUsername();
         
         $model = model('UsersModel');
-        d($model->withGroup($this->configs->defaultGroupUsers));
-        //$model->save($user);
+        $model->withGroup($this->configs->defaultGroupUsers);
+        $model->save($user);
 
         echo view('auth/register');
     }
