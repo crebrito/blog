@@ -16,11 +16,13 @@ class Register extends BaseController
             'password' => 'test123',
             'name' => 'Pepe',
             'surname' => 'Lopez',
-            'id_country' => 12
+            'id_country' => 12,
+            'created_at' => date('Y-m-d H:i:s')
         ];
 
         $user = new User($data);
-        d($user);
+        $user->generateUsername();
+        d($user->username);
         echo view('auth/register');
     }
 }
