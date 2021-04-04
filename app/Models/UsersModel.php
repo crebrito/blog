@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Entities\UserInfo;
 use CodeIgniter\Model;
 
 class UsersModel extends Model
@@ -25,6 +26,14 @@ class UsersModel extends Model
     protected $skipValidation     = false;
 
     protected $beforeInsert = ['addGroup'];
+    protected $afterInsert = ['storeUserInfo'];
+
+    protected function storeUserInfo($data){
+
+        $this->infoUser->id_user = $data['id'];
+        $model = model('UsersInfoModel');
+        $model->insert($this->infoUser);
+    }
 
     protected function addGroup($data){
 
@@ -35,6 +44,7 @@ class UsersModel extends Model
     }
 
     protected $assignGroup;
+    protected $infoUser;
 
     public function withGroup(string $group){
 
@@ -42,5 +52,9 @@ class UsersModel extends Model
         if($row !== null){
             $this->assignGroup = $row->id_group;
         }
+    }
+
+    public function addUserInfo(UserInfo $ui){
+        $this->infoUser = $ui;
     }
 }
