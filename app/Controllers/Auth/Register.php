@@ -15,7 +15,13 @@ class Register extends BaseController
         $this->configs = config('Blog');
     }
 
-    public function index()
+    public function index(){
+
+        return view('auth/register');
+
+    }
+
+    public function store()
     {
 
         $data = [

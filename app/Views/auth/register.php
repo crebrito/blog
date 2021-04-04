@@ -1,12 +1,85 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Registro</title>
-</head>
-<body>
-    <h1>Registro de Usuarios</h1>
-</body>
-</html>
+<?= $this->extend('front/layout/main') ?>
+
+<?= $this->section('title')?>
+Registro
+<?= $this->endSection()?>
+
+<?= $this->section('css')?>
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
+    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
+    crossorigin="anonymous" />
+<?= $this->endSection()?>
+
+<?= $this->section('content')?>
+<section class="section">
+
+    <div class="container">
+        <h1 class="title">Registrate ahora!</h1>
+        <h2 class="subtitle">
+            Solo debes ingresar algunos datos para comenzar a publicar.
+        </h2>
+
+        <div class="field">
+            <label class="label">Nombre</label>
+            <div class="control">
+                <input name="name" class="input" type="text" placeholder="Text input">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Apellidos</label>
+            <div class="control">
+                <input name="surname" class="input" type="text" placeholder="Text input">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Correo</label>
+            <div class="control has-icons-left has-icons-right">
+                <input name="email" class="input" type="email" placeholder="Email input">
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-exclamation-triangle"></i>
+                </span>
+            </div>
+            <p class="help is-danger">This email is invalid</p>
+        </div>
+
+        <div class="field">
+            <label class="label">Elije tu país:</label>
+            <div class="control">
+                <div class="select">
+                    <select name="id_country">
+                        <option>Select dropdown</option>
+                        <option>With options</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Contraseña</label>
+            <div class="control">
+                <input name="password" class="input" type="password" placeholder="Text input">
+            </div>
+        </div>
+
+        <div class="field">
+            <label class="label">Confirma tu Contraseña</label>
+            <div class="control">
+                <input name="c-password" class="input" type="password" placeholder="Text input">
+            </div>
+        </div>
+
+        <div class="field is-grouped">
+            <div class="control">
+                <button class="button is-link">Regsitrarse</button>
+            </div>
+        </div>
+
+    </div>
+
+</section>
+<?= $this->endSection()?>
