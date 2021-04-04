@@ -7,6 +7,13 @@ use App\Entities\User;
 
 class Register extends BaseController
 {
+    public $configs;
+
+    public function __construct()
+    {
+        $this->configs = config('Blog');
+    }
+
     public function index()
     {
 
@@ -17,12 +24,16 @@ class Register extends BaseController
             'name' => 'Pepe',
             'surname' => 'Lopez',
             'id_country' => 12,
-            'created_at' => date('Y-m-d H:i:s')
+            'group' => 2
         ];
 
         $user = new User($data);
         $user->generateUsername();
-        d($user->username);
+        
+        $model = model('UsersModel');
+        d($model->withGroup($this->configs->defaultGroupUsers));
+        //$model->save($user);
+
         echo view('auth/register');
     }
 }
