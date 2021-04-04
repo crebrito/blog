@@ -17,7 +17,10 @@ class Register extends BaseController
 
     public function index(){
 
-        return view('auth/register');
+        $model = model('CountriesModel');
+        return view('auth/register',[
+            'countries' => $model->findAll()
+        ]);
 
     }
 

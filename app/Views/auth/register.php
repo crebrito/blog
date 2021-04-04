@@ -5,9 +5,7 @@ Registro
 <?= $this->endSection()?>
 
 <?= $this->section('css')?>
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css"
-    integrity="sha512-iBBXm8fW90+nuLcSKlbmrPcLa0OT92xO1BIsZ+ywDWZCvqsWgccV3gFoRBv0z+8dLJgyAHIhR35VZc2oM/gI1w=="
-    crossorigin="anonymous" />
+<link rel="stylesheet" href="<?= base_url() ?>/assets/css/font-awesome.all.min.css"/>
 <?= $this->endSection()?>
 
 <?= $this->section('content')?>
@@ -44,7 +42,7 @@ Registro
                     <i class="fas fa-exclamation-triangle"></i>
                 </span>
             </div>
-            <p class="help is-danger">This email is invalid</p>
+            <p class="help"></p>
         </div>
 
         <div class="field">
@@ -52,8 +50,14 @@ Registro
             <div class="control">
                 <div class="select">
                     <select name="id_country">
-                        <option>Select dropdown</option>
-                        <option>With options</option>
+                        <option disabled selected>Elije un pais...</option>
+
+                        <?php foreach($countries as $c): ?>
+
+                            <option value="<?= $c->id_country ?>"><?= $c->name ?></option>
+
+                        <?php endforeach; ?>
+
                     </select>
                 </div>
             </div>
@@ -75,7 +79,7 @@ Registro
 
         <div class="field is-grouped">
             <div class="control">
-                <button class="button is-link">Regsitrarse</button>
+                <button class="button is-link">Registrarse</button>
             </div>
         </div>
 

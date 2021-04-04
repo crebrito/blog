@@ -1,4 +1,4 @@
-<section class="hero is-info">
+<section class="hero is-link has-text-primary">
     <div class="hero-body">
         <div class="container">
             <h1 class="title">
@@ -13,8 +13,12 @@
         <nav class="tabs is-boxed is-fullwidth">
             <div class="container">
                 <ul>
-                    <li><a href="<?= base_url(route_to('home'))?>">Inicio</a></li>
-                    <li><a href="<?= base_url(route_to('register'))?>">Registro</a></li>
+                    <li class="<?= service('request')->uri->getPath() == '/' ? 'is-active' : ''; ?>">
+                    <a href="<?= base_url(route_to('home'))?>">Inicio</a>
+                    </li>
+                    <li class="<?= service('request')->uri->getPath() == 'auth/registro' ? 'is-active' : ''; ?>">
+                    <a href="<?= base_url(route_to('register'))?>">Registro</a>
+                    </li>
                     <li><a>Ingresar</a></li>
                 </ul>
             </div>
