@@ -27,14 +27,20 @@ class Register extends BaseController
     public function store()
     {
 
-        $data = [
+        $validation = service('validation');
+        $validation->setRules([
+            'name' => 'required|alpha_space',
+            'surname' => 'required|alpha_space',
+            'email' => 'required|valid_email|is_unique[users.email]',
+            'id_country' => 'required|is_not_unique[countries.id_country]',
+            'password' => 'required|matches[c-password]'
+        ]);
 
-            'email' => 'aa@aa.com',
-            'password' => 'test123',
-            'name' => 'juan',
-            'surname' => 'lopez',
-            'id_country' => 12,
-        ];
+        if(!$validation->withRequest($this->request)->run()){
+            dd($validation->getErrors());
+        }
+        
+        exit();
 
         $user = new User($data);
         $user->generateUsername();
