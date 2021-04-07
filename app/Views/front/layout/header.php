@@ -14,12 +14,14 @@
             <div class="container">
                 <ul>
                     <li class="<?= service('request')->uri->getPath() == '/' ? 'is-active' : ''; ?>">
-                    <a href="<?= base_url(route_to('home'))?>">Inicio</a>
+                        <a href="<?= base_url(route_to('home'))?>">Inicio</a>
                     </li>
                     <li class="<?= service('request')->uri->getPath() == 'auth/registro' ? 'is-active' : ''; ?>">
-                    <a href="<?= base_url(route_to('register'))?>">Registro</a>
+                        <a href="<?= base_url(route_to('register'))?>">Registro</a>
                     </li>
-                    <li><a>Ingresar</a></li>
+                    <li class="<?= service('request')->uri->getPath() == 'auth/login' ? 'is-active' : ''; ?>">
+                        <a href="<?= base_url(route_to('login'))?>">Ingresar</a>
+                    </li>
                 </ul>
             </div>
         </nav>
