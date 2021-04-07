@@ -40,6 +40,7 @@ $routes->group('auth',['namespace'=>'App\Controllers\Auth'],function($routes){
 	
 	$routes->get('registro', 'Register::index',['as' => 'register']);
     $routes->post('store', 'Register::store');
+    $routes->get('login', 'Login::index',['as' => 'login']);
 
 });
 

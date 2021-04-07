@@ -37,22 +37,21 @@ class Register extends BaseController
         ]);
 
         if(!$validation->withRequest($this->request)->run()){
-            dd($validation->getErrors());
+            //dd($validation->getErrors());
+            return redirect()->back()->withInput()->with('errors',$validation->getErrors());
         }
-        
-        exit();
 
-        $user = new User($data);
+        $user = new User($this->request->getPost());
         $user->generateUsername();
         
         $model = model('UsersModel');
         $model->withGroup($this->configs->defaultGroupUsers);
 
-        $userInfo = new UserInfo($data);
+        $userInfo = new UserInfo($this->request->getPost());
         $model->addUserInfo($userInfo);
 
         $model->save($user);
 
-        echo view('auth/register');
+        return redirect()->route('login')->with('msg','Usuario registrado con éxito');
     }
 }

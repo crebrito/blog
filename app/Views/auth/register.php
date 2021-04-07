@@ -23,21 +23,23 @@ Registro
             <div class="field">
                 <label class="label">Nombre</label>
                 <div class="control">
-                    <input name="name" class="input" type="text" placeholder="Text input">
+                    <input name="name" value="<?= old('name') ?>" class="input" type="text" placeholder="Text input">
                 </div>
+                <p class="is-danger help"><?= session('errors.name') ?></p>
             </div>
 
             <div class="field">
                 <label class="label">Apellidos</label>
                 <div class="control">
-                    <input name="surname" class="input" type="text" placeholder="Text input">
+                    <input name="surname" value="<?= old('surname') ?>" class="input" type="text" placeholder="Text input">
                 </div>
+                <p class="is-danger help"><?= session('errors.surname') ?></p>
             </div>
 
             <div class="field">
                 <label class="label">Correo</label>
                 <div class="control has-icons-left has-icons-right">
-                    <input name="email" class="input" type="email" placeholder="Email input">
+                    <input name="email" class="input" type="email" value="<?= old('email') ?>" placeholder="Email input">
                     <span class="icon is-small is-left">
                         <i class="fas fa-envelope"></i>
                     </span>
@@ -45,7 +47,7 @@ Registro
                         <i class="fas fa-exclamation-triangle"></i>
                     </span>
                 </div>
-                <p class="help"></p>
+                <p class="is-danger help"><?= session('errors.email') ?></p>
             </div>
 
             <div class="field">
@@ -57,13 +59,14 @@ Registro
 
                             <?php foreach($countries as $c): ?>
 
-                            <option value="<?= $c->id_country ?>"><?= $c->name ?></option>
+                            <option value="<?= $c->id_country ?>" <?= $c->id_country == old('id_country') ? 'selected':''; ?>><?= $c->name ?></option>
 
                             <?php endforeach; ?>
 
                         </select>
                     </div>
                 </div>
+                <p class="is-danger help"><?= session('errors.id_country') ?></p>
             </div>
 
             <div class="field">
@@ -71,6 +74,7 @@ Registro
                 <div class="control">
                     <input name="password" class="input" type="password" placeholder="Text input">
                 </div>
+                <p class="is-danger help"><?= session('errors.password') ?></p>
             </div>
 
             <div class="field">
